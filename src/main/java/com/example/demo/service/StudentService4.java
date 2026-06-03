@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.StudentDto4;
 import com.example.demo.model.Student4;
 import com.example.demo.repository.StudentRepo4;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -68,19 +69,40 @@ public class StudentService4 {
     }
 
 
+
     //DTO - server side restriction
     //DIY - client side restriction
+
+    //ENTITY - DTO
     private StudentDto4 convertStuToDto(Student4 st4) {
         StudentDto4 sd4 = new StudentDto4();
         sd4.setRno4(st4.getRno());
         sd4.setName4(st4.getName());
+        sd4.setGender4(st4.getGender());
         sd4.setTech4(st4.getTech());
         sd4.setEmail4(st4.getEmail());
         return sd4;
+    }
+
+
+    //DTO - ENTITY
+    public String addStudentDto(@Valid StudentDto4 reqDto) {
+        Student4 stud4 = new Student4();
+        stud4.setRno(reqDto.getRno4());
+        stud4.setName(reqDto.getName4());
+        stud4.setGender(reqDto.getGender4());
+        stud4.setTech(reqDto.getTech4());
+        stud4.setEmail(reqDto.getEmail4());
+
+        sr4.save(stud4);
+        return "dto post successful";
+
     }
 
     public Page<Student4> getPageStud(int page, int size) {
         //Pageable pag = PageRequest.of()
         return sr4.findAll(PageRequest.of(page, size));
     }
+
+
 }

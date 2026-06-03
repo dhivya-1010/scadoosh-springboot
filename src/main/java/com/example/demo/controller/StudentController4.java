@@ -83,12 +83,10 @@ QUERY - native query and jpql query
     }
 
     //DTO
-//    @PostMapping("addStudent4")
-//    public StudentResponseDto addStudent(
-//            @RequestBody StudentRequestDto dto){
-//
-//        return s4.addStudent(dto);
-//    }
+    @PostMapping("addStudent4/post")
+   public String addStudentDto(@Valid @RequestBody StudentDto4 reqDto){
+        return s4.addStudentDto(reqDto);
+    }
 
     @GetMapping("pagination")
     //REQUESTPARAM
