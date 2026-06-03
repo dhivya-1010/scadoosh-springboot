@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.StudentDto4;
 import com.example.demo.model.Student4;
 import com.example.demo.service.StudentService4;
 import jakarta.validation.Valid;
 import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,6 +75,28 @@ QUERY - native query and jpql query
     public  List<Student4> getStudentByName(@RequestParam String name){
         return  s4.getStudentByName(name);
     }
+
+    //  DTO
+    @GetMapping("studentDto/{rno4}")
+    public StudentDto4 getStudDto(@PathVariable("rno4") int rno4){
+        return s4.getStudByDto(rno4);
+    }
+
+    //DTO
+//    @PostMapping("addStudent4")
+//    public StudentResponseDto addStudent(
+//            @RequestBody StudentRequestDto dto){
+//
+//        return s4.addStudent(dto);
+//    }
+
+    @GetMapping("pagination")
+    //REQUESTPARAM
+    public Page<Student4> getPageStud(@RequestParam("page") int page,@RequestParam("size") int size){ //for this page, this number of data - page, size
+        return s4.getPageStud(page,size);
+    }
+
+
 
 
 }
