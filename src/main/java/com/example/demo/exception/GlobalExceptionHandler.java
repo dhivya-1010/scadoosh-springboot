@@ -10,10 +10,10 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String,String> handleValidation(
-            MethodArgumentNotValidException ex){
+    public Map<String, String> handleValidation(
+            MethodArgumentNotValidException ex) {
 
-        Map<String,String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult()
                 // i use ex because it is the object of MethodArgumentNotValidException
@@ -32,3 +32,4 @@ public class GlobalExceptionHandler {
 
         return errors;
     }
+}
