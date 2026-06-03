@@ -21,7 +21,7 @@ public class StudentService4 {
         return "added successfully";
     }
 
-    public Student4 getStud4ByNo(int rno) {
+    public Student4 getStud4ByNo(Integer rno) {
 
         return sr4.findById(rno).orElse(new Student4());
     }
@@ -32,7 +32,7 @@ public class StudentService4 {
         return "updated successfully";
     }
 
-    public String deleteStud4(int rno) {
+    public String deleteStud4(Integer rno) {
         sr4.deleteById(rno);
         return "deleted successfully";
     }

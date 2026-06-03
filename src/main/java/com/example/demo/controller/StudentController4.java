@@ -20,7 +20,7 @@ public class StudentController4 {
         return s4.getStudent4();
     }
     @GetMapping("getUniqstudent4/{rno}")
-    public Student4 getStud4ByNo(@PathVariable("rno") int rno){  //if both are same name, can use like (@PathVariable int rno)
+    public Student4 getStud4ByNo(@PathVariable("rno") Integer rno){  //if both are same name, can use like (@PathVariable int rno)
 
         return s4.getStud4ByNo(rno);
     }
@@ -37,7 +37,7 @@ public class StudentController4 {
     }
 
     @DeleteMapping("deleteStudent4/{rno}")
-    public String deleteStud4(@PathVariable("rno") int rno){
+    public String deleteStud4(@PathVariable("rno") Integer rno){
         return s4.deleteStud4(rno);
     }
     @DeleteMapping("delStudent4")
