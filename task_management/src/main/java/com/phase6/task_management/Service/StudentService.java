@@ -21,6 +21,6 @@ public class StudentService {
     }
 
     public Student getStudentById(int id) {
-        return repo.findById();
+        return repo.findById(id).orElseThrow(()-> new RuntimeException("Student not found with id "+id));
     }
 }
