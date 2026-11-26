@@ -19,4 +19,8 @@ public class StudentService {
     public List<Student> getAllStudents(){
         return repo.findAll();
     }
+
+    public Student getStudentById(int id) {
+        return repo.findById();
+    }
 }

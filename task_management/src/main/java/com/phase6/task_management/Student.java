@@ -6,15 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name="students")
+@Data
 @AllArgsConstructor   //complete the requirement of parameterized constructor
 @NoArgsConstructor   //complete the requirement of default constructor
-@Table(name="student table")
-@Data
+
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
     private String firstName;
+
     private String lastName;
 
 }

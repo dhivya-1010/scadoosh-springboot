@@ -25,7 +25,7 @@ public class StudentController {
         return s;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Student getById(@PathVariable int id){
         for(Student x:s){
             if(x.getId()==id){
@@ -34,6 +34,12 @@ public class StudentController {
         }
         return null;
     }
+    @GetMapping("/ent/{id}")
+    public ResponseEntity<Student> getByNumber(@PathVariable int id){
+        Student x = studentService.getStudentById(id);
+        return ResponseEntity.ok(x);
+    }
+
     @PutMapping("/update/{id}")
     public String updateId(@PathVariable int id, @RequestBody Student stu){
         for(Student x:s){
