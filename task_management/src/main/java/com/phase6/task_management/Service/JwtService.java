@@ -1,6 +1,6 @@
-
 package com.phase6.task_management.Service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -43,5 +43,18 @@ public class JwtService {
                 .expiration(expirationDate)
                 .signWith(secretKey)
                 .compact();
+    }
+    public String extractUserName(String token){
+        return extractAllClaims(token).getSubject();
+    }
+    private Claims extractAllClaims(String token){
+        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload();
+    }
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        String userName = extractUserName(token);
+        return userName.equals(userDetails.getUsername()) && extractAllClaims(token).getExpiration().after(new Date());
+    }
+    public long getJwtExpirationMillis(){
+        return jwtExpiration;
     }
 }
