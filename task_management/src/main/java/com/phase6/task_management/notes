@@ -5,3 +5,9 @@ Spring security
 
 spring security flow: http req-> security filter chain-> authentication manager->
             authentication provider-> password encoder-> user details service-> db ----------> http response
+
+stateless - sessionId will be stored, as long as the session id exists, we can login and do the works. but it is vulnerable
+            to hack.
+
+to generate secret: openssl rand ~base64 32
+
