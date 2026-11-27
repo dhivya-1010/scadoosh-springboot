@@ -1,0 +1,7 @@
+Spring security
+1. SecurityContextHolder
+     -> principal
+     -> authorization
+
+spring security flow: http req-> security filter chain-> authentication manager->
+            authentication provider-> password encoder-> user details service-> db ----------> http response
